@@ -8,16 +8,6 @@ Imports System.Collections.Generic
 Imports DevExpress.Persistent.BaseImpl
 
 Namespace GanttSolution.Module.BusinessObjects
-    Public Interface ITask
-        ReadOnly Property Id() As ITask
-        Property Name() As String
-        Property StartDate() As Date
-        Property EndDate() As Date
-        Property Duration() As TimeSpan
-        Property Progress() As Double
-        Property Parent() As ITask
-        ReadOnly Property PredecessorTasks() As IList(Of ITask)
-    End Interface
     <DefaultClassOptions>
     Public Class Task
         Inherits BaseObject
@@ -105,7 +95,7 @@ Namespace GanttSolution.Module.BusinessObjects
             End Get
         End Property
 
-        #Region "ITask"
+#Region "ITask"
         <Browsable(False)>
         Public ReadOnly Property Id() As ITask Implements ITask.Id
             Get
@@ -125,6 +115,6 @@ Namespace GanttSolution.Module.BusinessObjects
                 Return DirectCast(PredecessorTasks, IList(Of ITask))
             End Get
         End Property
-        #End Region
+#End Region
     End Class
 End Namespace

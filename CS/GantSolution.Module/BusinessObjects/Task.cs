@@ -8,16 +8,6 @@ using System.Collections.Generic;
 using DevExpress.Persistent.BaseImpl;
 
 namespace GanttSolution.Module.BusinessObjects {
-    public interface ITask {
-        ITask Id { get; }
-        string Name { get; set; }
-        DateTime StartDate { get; set; }
-        DateTime EndDate { get; set; }
-        TimeSpan Duration { get; set; }
-        double Progress { get; set; }
-        ITask Parent { get; set; }
-        IList<ITask> PredecessorTasks { get; }
-    }
     [DefaultClassOptions]
     public class Task : BaseObject, ITask { 
         public Task(Session session)
