@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GantSolution.Win", "GantSolution.Win\GantSolution.Win.vbproj", "{98CA1615-7076-4270-A911-8F8A496D91BA}"
+EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GantSolution.Module", "GantSolution.Module\GantSolution.Module.vbproj", "{1B56FFE9-8E16-44D0-8930-CBBE34CAB0AA}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GantSolution.Module.Win", "GantSolution.Module.Win\GantSolution.Module.Win.vbproj", "{473DF98E-A137-4FD3-86AB-E4E9040BA892}"
-EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GantSolution.Win", "GantSolution.Win\GantSolution.Win.vbproj", "{98CA1615-7076-4270-A911-8F8A496D91BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

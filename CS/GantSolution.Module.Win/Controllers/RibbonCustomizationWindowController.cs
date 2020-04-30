@@ -3,10 +3,6 @@ using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Ribbon;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GantSolution.Module.Win.Controllers {
     public class RibbonCustomizationWindowController : ViewController<ListView> {

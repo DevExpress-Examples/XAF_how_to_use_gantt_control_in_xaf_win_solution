@@ -2,14 +2,7 @@
 Imports DevExpress.ExpressApp.Editors
 Imports DevExpress.ExpressApp.Model
 Imports DevExpress.XtraGantt
-Imports System
-Imports System.Collections
-Imports System.Collections.Generic
 Imports System.ComponentModel
-Imports System.Linq
-Imports System.Text
-Imports System.Threading.Tasks
-Imports System.Windows.Forms
 Imports GanttSolution.Module.BusinessObjects
 
 Namespace GanttSolution.Module.Win.Editors
