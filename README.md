@@ -21,7 +21,7 @@ This example demonstrates a possible integration of the [Gantt Control](https://
 
 **Step2.1.** Build your solution.
 
-**Step3.** Set *GanttSolution.Module.Win.Editors.CustomGanttEditor* as an editor for the list view of the class from Step1. Refer to the following ariticle to learn how to change a list editor's type: [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors).
+**Step3.** Set *GanttSolution.Module.Win.Editors.CustomGanttEditor* as an editor for the list view of the class from Step1. Refer to the following article to learn how to change a list editor's type: [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors).
 
 
 
