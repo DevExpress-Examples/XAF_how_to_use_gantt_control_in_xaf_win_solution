@@ -13,5 +13,6 @@
 x64/
 x86/
 bld/
+.vs/
 [Oo]bj/
 [Ll]og/
