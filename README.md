@@ -3,7 +3,7 @@
 * [CustomGanttEditor.cs](./CS/GantSolution.Module.Win/Editors/CustomGanttEditor.cs) (VB: [CustomGanttEditor.vb](./VB/GantSolution.Module.Win/Editors/CustomGanttEditor.vb))
 * [RibbonCustomizationWindowController.cs](./CS/GantSolution.Module.Win/Controllers/RibbonCustomizationWindowController.cs) (VB: [CustomGanttEditor.vb](./VB/GantSolution.Module.Win/Controllers/RibbonCustomizationWindowController.vb))
 
-# How to use Gantt Control in an XAF solution
+# How to use Gantt Control in an XAF WinForms solution
 
 ### Scenario
 
@@ -19,9 +19,9 @@ This example demonstrates a possible integration of the [Gantt Control](https://
   - GantSolution.Module.Win\Controllers\RibbonCustomizationWindowController.cs
   - GantSolution.Module.Win\Editors\CustomGanttEditor.cs
 
-**Step2.1** Build your solution.
+**Step2.1.** Build your solution.
 
-**Step3.** Set *GanttSolution.Module.Win.Editors.CustomGanttEditor* as an editor for the class from Step1 **list view**. Refer to the following ariticle to learn how to change a list editor's type: [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors).
+**Step3.** Set *GanttSolution.Module.Win.Editors.CustomGanttEditor* as an editor for the list view of the class from Step1. Refer to the following ariticle to learn how to change a list editor's type: [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors).
 
 
 
