@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" ?>
+<Application>
+  <Views>
+    <ListView Id="Task_ListView" EditorTypeName="GanttSolution.Module.Win.Editors.CustomGanttEditor" AllowEdit="True">
+      <Columns>
+        <ColumnInfo Id="Duration" Removed="True" />
+        <ColumnInfo Id="Oid" Removed="True" />
+        <ColumnInfo Id="Parent" Removed="True" />
+        <ColumnInfo Id="Progress" Removed="True" />
+        <ColumnInfo Id="Name" SortIndex="-1" />
+        <ColumnInfo Id="StartDate" SortIndex="0" />
+      </Columns>
+    </ListView>
+    <DetailView Id="Task_DetailView">
+      <Items>
+        <PropertyEditor Id="PredecessorTasks" Removed="True" />
+        <PropertyEditor Id="Progress" Removed="True" />
+      </Items>
+    </DetailView>
+  </Views>
+</Application>
