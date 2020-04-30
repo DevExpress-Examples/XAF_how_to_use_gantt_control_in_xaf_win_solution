@@ -2,11 +2,6 @@
 Imports DevExpress.XtraBars.Ribbon
 Imports DevExpress.XtraGantt
 Imports DevExpress.XtraGantt.Ribbon
-Imports System
-Imports System.Collections.Generic
-Imports System.Linq
-Imports System.Text
-Imports System.Threading.Tasks
 
 Namespace GantSolution.Module.Win.Controllers
     Public Class RibbonCustomizationWindowController
@@ -34,7 +29,7 @@ Namespace GantSolution.Module.Win.Controllers
             End If
         End Sub
 
-        #Region "Initialization"
+#Region "Initialization"
         Private Sub AddGanttPageToRibbon()
             Dim ribbonStatusBar As New RibbonStatusBar()
             Dim ganttBarController As New GanttBarController()
@@ -57,8 +52,8 @@ Namespace GantSolution.Module.Win.Controllers
             ' 
             ' ribbonControl
             ' 
-            ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() { ribbonControl.ExpandCollapseItem, ribbonControl.SearchEditItem, ganttAllowResizeBarCheckItem, ganttPanelVisibilityBarSubItem, ganttPanelVisibilityDefaultBarCheckItem, ganttPanelVisibilityBothBarCheckItem, ganttPanelVisibilityChartBarCheckItem, ganttPanelVisibilityTreeBarCheckItem, ganttFixedPanelBarSubItem, ganttFixedPanelDefaultBarCheckItem, ganttFixedPanelNoneBarCheckItem, ganttFixedPanelChartBarCheckItem, ganttFixedPanelTreeBarCheckItem})
-            ribbonControl.Pages.AddRange(New RibbonPage() { ganttViewRibbonPage})
+            ribbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {ribbonControl.ExpandCollapseItem, ribbonControl.SearchEditItem, ganttAllowResizeBarCheckItem, ganttPanelVisibilityBarSubItem, ganttPanelVisibilityDefaultBarCheckItem, ganttPanelVisibilityBothBarCheckItem, ganttPanelVisibilityChartBarCheckItem, ganttPanelVisibilityTreeBarCheckItem, ganttFixedPanelBarSubItem, ganttFixedPanelDefaultBarCheckItem, ganttFixedPanelNoneBarCheckItem, ganttFixedPanelChartBarCheckItem, ganttFixedPanelTreeBarCheckItem})
+            ribbonControl.Pages.AddRange(New RibbonPage() {ganttViewRibbonPage})
             ribbonControl.StatusBar = ribbonStatusBar
             ribbonStatusBar.Ribbon = ribbonControl
             ' 
@@ -86,7 +81,7 @@ Namespace GantSolution.Module.Win.Controllers
             ' 
             ' ganttViewRibbonPage
             ' 
-            ganttViewRibbonPage.Groups.AddRange(New RibbonPageGroup() { ganttSplitViewRibbonPageGroup})
+            ganttViewRibbonPage.Groups.AddRange(New RibbonPageGroup() {ganttSplitViewRibbonPageGroup})
             ganttViewRibbonPage.Text = "Gantt"
             ' 
             ' ganttPanelVisibilityBarSubItem
@@ -110,7 +105,7 @@ Namespace GantSolution.Module.Win.Controllers
             ribbonControl.EndInit()
             CType(ganttBarController, System.ComponentModel.ISupportInitialize).EndInit()
         End Sub
-        #End Region
+#End Region
 
         Protected Overrides Sub OnDeactivated()
             RemoveHandler View.ControlsCreated, AddressOf View_ControlsCreated

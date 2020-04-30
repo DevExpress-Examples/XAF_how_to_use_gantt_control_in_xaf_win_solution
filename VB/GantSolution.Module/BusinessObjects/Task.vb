@@ -1,10 +1,6 @@
-﻿Imports System
-Imports System.Linq
-Imports System.Text
-Imports DevExpress.Xpo
+﻿Imports DevExpress.Xpo
 Imports System.ComponentModel
 Imports DevExpress.Persistent.Base
-Imports System.Collections.Generic
 Imports DevExpress.Persistent.BaseImpl
 
 Namespace GanttSolution.Module.BusinessObjects
