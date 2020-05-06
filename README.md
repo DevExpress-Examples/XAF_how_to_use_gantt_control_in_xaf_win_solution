@@ -27,4 +27,4 @@ This example demonstrates a possible integration of the [Gantt Control](https://
 
 
 ### Important Note
-Please take special note that this example is not a complete solution. Its main purpose to show the way to integrate the gantt control. Extend and modify this editor to meet your business requirements. Thoroughly test it before using in production.
+Please take special note that this example is not a complete solution. Its main purpose to show the way to integrate [GanttControl](https://docs.devexpress.com/WindowsForms/DevExpress.XtraGantt.GanttControl). Extend and modify this editor to meet your business requirements. Thoroughly test it before using in production.
