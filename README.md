@@ -12,16 +12,16 @@ This example demonstrates a possible integration of the [Gantt Control](https://
 
 ### Implementation Steps
 
-**Step1.** Copy the BusinessObjects\ITask.cs(!link here) file to your *YourSolutionName.Module* project. Then implement the *GanttSolution.Module.BusinessObjects.ITask* interface in the business class that will represents a record in Gantt Control data source.
+**Step1.** Copy the BusinessObjects\ITask.cs(!link here) file to your *YourSolutionName.Module* project. Implement the *GanttSolution.Module.BusinessObjects.ITask* interface in the business class that will represents a record in Gantt Control data source.
 
 **Step2.** Copy the following files to the *YourSolutionName.Module.Win* project:
   
   - GantSolution.Module.Win\Controllers\RibbonCustomizationWindowController.cs
   - GantSolution.Module.Win\Editors\CustomGanttEditor.cs
 
-**Step2.1.** Build your solution.
+**Step3.** Build your solution.
 
-**Step3.** Set *GanttSolution.Module.Win.Editors.CustomGanttEditor* as an editor for the list view of the class from Step1. Refer to the following article to learn how to change a list editor's type: [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors).
+**Step4.** Set *GanttSolution.Module.Win.Editors.CustomGanttEditor* as an editor for the list view of the class from Step1. Refer to the following article to learn how to change a list editor's type: [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors).
 
 
 
