@@ -12,7 +12,7 @@ This example demonstrates a possible integration of the [Gantt Control](https://
 
 ### Implementation Steps
 
-**Step1.** Copy the BusinessObjects\ITask.cs(!link here) file to your *YourSolutionName.Module* project. Implement the *GanttSolution.Module.BusinessObjects.ITask* interface in the business class that will represents a record in Gantt Control data source.
+**Step1.** Copy the [GantSolution.Module/BusinessObjects/ITask.cs](.CS/GantSolution.Module/BusinessObjects/ITask.cs) file to your *YourSolutionName.Module* project. Implement the *GanttSolution.Module.BusinessObjects.ITask* interface in the business class that will represents a record in Gantt Control data source.
 
 **Step2.** Copy the following files to the *YourSolutionName.Module.Win* project:
   
