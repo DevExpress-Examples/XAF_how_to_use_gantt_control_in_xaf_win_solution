@@ -8,7 +8,7 @@
 ## Scenario
 
 This example demonstrates the simplest integration solution for the [Gantt Control](https://docs.devexpress.com/WindowsForms/401173/controls-and-libraries/gantt-control/gantt-control) in XAF. Gantt will display a list of business objects (tasks) as a project schedule:
-![preview4](https://user-images.githubusercontent.com/14300209/80727769-c9d1e300-8b0e-11ea-98e4-45f4731e6c84.png)
+![image](https://user-images.githubusercontent.com/14300209/82027691-4d5a0b00-969d-11ea-936f-a68f863d9f8a.png)
 
 ## Implementation Steps
 
