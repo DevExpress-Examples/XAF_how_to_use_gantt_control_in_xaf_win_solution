@@ -1,7 +1,7 @@
 
 *Files to look at*:
-* [CustomGanttEditor.cs](./CS/GantSolution.Module.Win/Editors/CustomGanttEditor.cs) (VB: [CustomGanttEditor.vb](./VB/GantSolution.Module.Win/Editors/CustomGanttEditor.vb))
-* [RibbonCustomizationWindowController.cs](./CS/GantSolution.Module.Win/Controllers/RibbonCustomizationWindowController.cs) (VB: [CustomGanttEditor.vb](./VB/GantSolution.Module.Win/Controllers/RibbonCustomizationWindowController.vb))
+* [CustomGanttEditor.cs](./CS/GanttSolution.Module.Win/Editors/CustomGanttEditor.cs) (VB: [CustomGanttEditor.vb](./VB/GanttSolution.Module.Win/Editors/CustomGanttEditor.vb))
+* [RibbonCustomizationWindowController.cs](./CS/GanttSolution.Module.Win/Controllers/RibbonCustomizationWindowController.cs) (VB: [CustomGanttEditor.vb](./VB/GanttSolution.Module.Win/Controllers/RibbonCustomizationWindowController.vb))
 
 # How to Use the Gantt Control to Display a List of Tasks in XAF WinForms Apps
 
@@ -12,12 +12,12 @@ This example demonstrates the simplest integration solution for the [Gantt Contr
 
 ## Implementation Steps
 
-**Step 1.** Add the [GantSolution.Module/BusinessObjects/ITask.cs](.CS/GantSolution.Module/BusinessObjects/ITask.cs) file to your *YourSolutionName.Module* project. Implement the *GanttSolution.Module.BusinessObjects.ITask* interface in the business class that will be a task record in the Gantt Control data source (research *GanttSolution.Module.BusinessObjects.Task.cs* for details).
+**Step 1.** Add the [GanttSolution.Module/BusinessObjects/ITask.cs](.CS/GanttSolution.Module/BusinessObjects/ITask.cs) file to your *YourSolutionName.Module* project. Implement the *GanttSolution.Module.BusinessObjects.ITask* interface in the business class that will be a task record in the Gantt Control data source (research *GanttSolution.Module.BusinessObjects.Task.cs* for details).
 
 **Step 2.** Add the following files to the *YourSolutionName.Module.Win* project and build your solution:
   
-  - *GantSolution.Module.Win\Controllers\RibbonCustomizationWindowController.cs*
-  - *GantSolution.Module.Win\Editors\CustomGanttEditor.cs*
+  - *GanttSolution.Module.Win\Controllers\RibbonCustomizationWindowController.cs*
+  - *GanttSolution.Module.Win\Editors\CustomGanttEditor.cs*
   
 For more information on custom List Editors and related customization scenarios, see [List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors) | [How to: Access the List Editor's Control](https://docs.devexpress.com/eXpressAppFramework/112814/task-based-help/scheduler-and-notifications/how-to-access-the-list-editors-control).
 
