@@ -72,6 +72,8 @@ Namespace GanttSolution.Module.Win.Editors
                 ganttColumn.Name = column.PropertyName & "Column"
                 ganttColumn.Visible = True
                 ganttColumn.SortIndex = column.SortIndex
+                ganttColumn.Format.FormatString = column.DisplayFormat
+                ganttColumn.Format.FormatType = DevExpress.Utils.FormatType.Custom
                 ganttControl.Columns.Add(ganttColumn)
             Next column
             ganttControl.KeyFieldName = NameOf(ITask.Id)

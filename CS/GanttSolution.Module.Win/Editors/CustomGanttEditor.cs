@@ -70,6 +70,8 @@ namespace GanttSolution.Module.Win.Editors {
                 ganttColumn.Name = column.PropertyName + "Column";
                 ganttColumn.Visible = true;
                 ganttColumn.SortIndex = column.SortIndex;
+                ganttColumn.Format.FormatString = column.DisplayFormat;
+                ganttColumn.Format.FormatType = DevExpress.Utils.FormatType.Custom;
                 control.Columns.Add(ganttColumn);
             }
             control.KeyFieldName = nameof(ITask.Id);
