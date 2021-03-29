@@ -24,3 +24,6 @@ For more information on custom List Editors and related customization scenarios,
 **Step 3.** Invoke the Model Editor for the *YourSolutionName.Module.Win* project, navigate to the `Views | YourTaskClass_ListView` node and set **EditorType** to `GanttSolution.Module.Win.Editors.CustomGanttEditor`. For more information, see [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors).
 
 **NOTE**: This example is not a complete solution. Thoroughly test, extend and modify its code to meet your business requirements.
+
+---
+To integrate ASPxGantt into an XAF ASP.NET project, create a custom list editor as we described at [T831607 - Web - How to use ASPxGantt in XAF](https://supportcenter.devexpress.com/internal/ticket/details/T831607#)
