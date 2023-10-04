@@ -38,4 +38,7 @@
     <PackageReference Include="DevExpress.RichEdit.Export" Version="23.1.5" />
     <PackageReference Include="DevExpress.Win.Design" Version="23.1.5" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GanttSolutionXPO.Module\GanttSolutionXPO.Module.csproj" />
+  </ItemGroup>
 </Project>
