@@ -19,7 +19,6 @@ namespace GanttSolution.Module.BusinessObjects {
             base.AfterConstruction();
         }
         private MyTask parent;
-        [Association("PredecessorTasks")]
         public MyTask Parent {
             get { return parent; }
             set { SetPropertyValue(nameof(Parent), ref parent, value); }
@@ -56,7 +55,13 @@ namespace GanttSolution.Module.BusinessObjects {
                 return GetCollection<MyTask>(nameof(PredecessorTasks));
             }
         }
-       
+        [Association("PredecessorTasks")]
+        [Browsable(false)]
+        public XPCollection<MyTask> NotPredecessorTasks {
+            get {
+                return GetCollection<MyTask>(nameof(NotPredecessorTasks));
+            }
+        }
 
         #region ITask
         [Browsable(false)]
