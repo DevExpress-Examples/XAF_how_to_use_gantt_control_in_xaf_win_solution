@@ -67,22 +67,22 @@ namespace GanttSolution.Module.Win.Editors {
         }
         protected override object CreateControlsCore() {
             control = new GanttControl();
-            //foreach(IModelColumn column in Model.Columns) {
-            //    var ganttColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            //    ganttColumn.Caption = column.Caption;
-            //    ganttColumn.FieldName = column.PropertyName;
-            //    ganttColumn.Name = column.PropertyName + "Column";
-            //    ganttColumn.Visible = true;
-            //    //ganttColumn.SortIndex = column.SortIndex;
-            //    //ganttColumn.Format.FormatString = column.DisplayFormat;
-            //    //ganttColumn.Format.FormatType = DevExpress.Utils.FormatType.Custom;
-            //    control.Columns.Add(ganttColumn);
-            //}
-            var ganttColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            ganttColumn.Caption = "Name";
-            ganttColumn.FieldName = "Name";
-            ganttColumn.Visible = true;
-            control.Columns.Add(ganttColumn);
+            foreach (IModelColumn column in Model.Columns) {
+                var ganttColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+                ganttColumn.Caption = column.Caption;
+                ganttColumn.FieldName = column.PropertyName;
+                ganttColumn.Name = column.PropertyName + "Column";
+                ganttColumn.Visible = true;
+                ganttColumn.SortIndex = column.SortIndex;
+                ganttColumn.Format.FormatString = column.DisplayFormat;
+                ganttColumn.Format.FormatType = DevExpress.Utils.FormatType.Custom;
+                control.Columns.Add(ganttColumn);
+            }
+            //var ganttColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            //ganttColumn.Caption = "Name";
+            //ganttColumn.FieldName = "Name";
+            //ganttColumn.Visible = true;
+            //control.Columns.Add(ganttColumn);
             control.KeyFieldName = "Id";
             control.ParentFieldName = "MyParent";
             control.ChartMappings.TextFieldName = nameof(IMyTask.Name);
