@@ -122,7 +122,7 @@ namespace GanttSolution.Module.Win.Controllers {
             View.ControlsCreated -= View_ControlsCreated;
             if(ribbonControl != null) {
                 ribbonControl.Pages.Remove(ganttViewRibbonPage);
-                ganttViewRibbonPage.Dispose();
+                ganttViewRibbonPage?.Dispose();
             }
             base.OnDeactivated();
         }

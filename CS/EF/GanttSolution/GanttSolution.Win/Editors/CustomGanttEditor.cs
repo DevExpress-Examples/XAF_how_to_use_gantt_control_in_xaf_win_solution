@@ -7,6 +7,8 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using GanttSolution.Module.BusinessObjects;
+using DevExpress.ExpressApp.EFCore;
+using System.Windows.Controls;
 
 namespace GanttSolution.Module.Win.Editors {
     [ListEditor(typeof(IMyTask), false)]
@@ -18,7 +20,7 @@ namespace GanttSolution.Module.Win.Editors {
             get { return SelectionType.Full; }
         }
         public override IList GetSelectedObjects() {
-            if(control == null) {
+            if (control == null) {
                 return new object[0] { };
             }
             object[] result = new object[1];
@@ -33,11 +35,13 @@ namespace GanttSolution.Module.Win.Editors {
             OnSelectionChanged();
         }
         public override void Refresh() {
-            if(control == null)
+            if (control == null)
                 return;
             try {
                 control.BeginUpdate();
-                control.DataSource = controlDataSource;
+                var lst = ((ProxyCollection)controlDataSource).OriginalCollection as EFCoreCollection;
+                var lst2 = lst.Cast<object>().ToList();
+                control.DataSource = lst2;
                 control.RefreshDataSource();
             }
             finally {
@@ -48,14 +52,14 @@ namespace GanttSolution.Module.Win.Editors {
             Refresh();
         }
         protected override void AssignDataSourceToControl(object dataSource) {
-            if(controlDataSource != dataSource) {
+            if (controlDataSource != dataSource) {
                 IBindingList oldBindable = controlDataSource as IBindingList;
-                if(oldBindable != null) {
+                if (oldBindable != null) {
                     oldBindable.ListChanged -= new ListChangedEventHandler(DataSource_ListChanged);
                 }
                 controlDataSource = dataSource;
                 IBindingList bindable = controlDataSource as IBindingList;
-                if(bindable != null) {
+                if (bindable != null) {
                     bindable.ListChanged += DataSource_ListChanged;
                 }
                 Refresh();
@@ -63,19 +67,24 @@ namespace GanttSolution.Module.Win.Editors {
         }
         protected override object CreateControlsCore() {
             control = new GanttControl();
-            foreach(IModelColumn column in Model.Columns) {
-                var ganttColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-                ganttColumn.Caption = column.Caption;
-                ganttColumn.FieldName = column.PropertyName;
-                ganttColumn.Name = column.PropertyName + "Column";
-                ganttColumn.Visible = true;
-                ganttColumn.SortIndex = column.SortIndex;
-                ganttColumn.Format.FormatString = column.DisplayFormat;
-                ganttColumn.Format.FormatType = DevExpress.Utils.FormatType.Custom;
-                control.Columns.Add(ganttColumn);
-            }
-            control.KeyFieldName = nameof(IMyTask.Id);
-            control.ParentFieldName = nameof(IMyTask.Parent);
+            //foreach(IModelColumn column in Model.Columns) {
+            //    var ganttColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            //    ganttColumn.Caption = column.Caption;
+            //    ganttColumn.FieldName = column.PropertyName;
+            //    ganttColumn.Name = column.PropertyName + "Column";
+            //    ganttColumn.Visible = true;
+            //    //ganttColumn.SortIndex = column.SortIndex;
+            //    //ganttColumn.Format.FormatString = column.DisplayFormat;
+            //    //ganttColumn.Format.FormatType = DevExpress.Utils.FormatType.Custom;
+            //    control.Columns.Add(ganttColumn);
+            //}
+            var ganttColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            ganttColumn.Caption = "Name";
+            ganttColumn.FieldName = "Name";
+            ganttColumn.Visible = true;
+            control.Columns.Add(ganttColumn);
+            control.KeyFieldName = "Id";
+            control.ParentFieldName = "MyParent";
             control.ChartMappings.TextFieldName = nameof(IMyTask.Name);
             control.ChartMappings.StartDateFieldName = nameof(IMyTask.StartDate);
             control.ChartMappings.FinishDateFieldName = nameof(IMyTask.EndDate);
@@ -86,10 +95,10 @@ namespace GanttSolution.Module.Win.Editors {
             control.OptionsCustomization.AllowModifyTasks = DevExpress.Utils.DefaultBoolean.True;
             control.OptionsCustomization.AllowModifyDependencies = DevExpress.Utils.DefaultBoolean.True;
             control.OptionsCustomization.AllowModifyProgress = DevExpress.Utils.DefaultBoolean.True;
-            control.SelectionChanged += Control_SelectedIndexChanged;
-            control.FocusedNodeChanged += Control_FocusedNodeChanged;
-            control.MouseDoubleClick += Control_MouseDoubleClick;
-            control.KeyDown += Control_KeyDown;
+            //control.SelectionChanged += Control_SelectedIndexChanged;
+            //control.FocusedNodeChanged += Control_FocusedNodeChanged;
+            //control.MouseDoubleClick += Control_MouseDoubleClick;
+            //control.KeyDown += Control_KeyDown;
             Refresh();
             return control;
         }
@@ -98,15 +107,15 @@ namespace GanttSolution.Module.Win.Editors {
             OnFocusedObjectChanged();
         }
         private void Control_MouseDoubleClick(object sender, MouseEventArgs e) {
-            if(e.Button == MouseButtons.Left) {
+            if (e.Button == MouseButtons.Left) {
                 GanttControlHitInfo hitInfo = control.CalcHitInfo(e.Location);
-                if(hitInfo.ChartHitTest?.ItemInfo != null) {
+                if (hitInfo.ChartHitTest?.ItemInfo != null) {
                     OnProcessSelectedItem();
                 }
             }
         }
         private void Control_KeyDown(object sender, KeyEventArgs e) {
-            if(e.KeyCode == Keys.Enter) {
+            if (e.KeyCode == Keys.Enter) {
                 OnProcessSelectedItem();
             }
         }

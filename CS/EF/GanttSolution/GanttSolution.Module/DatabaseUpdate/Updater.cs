@@ -26,7 +26,7 @@ public class Updater : ModuleUpdater {
         if (firstTask == null) {
             firstTask = ObjectSpace.CreateObject<MyTask>();
             firstTask.Name = "First Task";
-            firstTask.Parent = mainTask;
+            
             firstTask.StartDate = DateTime.Today;
             firstTask.EndDate = DateTime.Today.AddDays(7);
         }
@@ -34,11 +34,15 @@ public class Updater : ModuleUpdater {
         if (secondTask == null) {
             secondTask = ObjectSpace.CreateObject<MyTask>();
             secondTask.Name = "Second Task";
-            secondTask.Parent = mainTask;
+           
             secondTask.StartDate = DateTime.Today.AddDays(7);
             secondTask.EndDate = DateTime.Today.AddDays(14);
-            secondTask.PredecessorTasks.Add(firstTask);
+           
         }
+        ObjectSpace.CommitChanges();
+        secondTask.MyParent = mainTask.MyTaskId;
+        firstTask.MyParent = mainTask.MyTaskId;
+        secondTask.PredecessorTasks = firstTask.MyTaskId.ToString();
         ObjectSpace.CommitChanges();
     }
     public override void UpdateDatabaseBeforeUpdateSchema() {

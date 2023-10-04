@@ -40,5 +40,8 @@ public class GanttSolutionEFCoreDbContext : DbContext {
         base.OnModelCreating(modelBuilder);
         modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.ChangingAndChangedNotificationsWithOriginalValues);
         modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
+	//	modelBuilder.Entity<MyTask>().HasMany(e => e.PredecessorTasks).WithMany(e => e.NotPredecessorTasks);
+	//	modelBuilder.Entity<MyTask>().HasMany(e => e.Children).WithOne(e => e.Parent);
+		
     }
 }

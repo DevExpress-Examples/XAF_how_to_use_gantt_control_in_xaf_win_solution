@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Logo="ExpressAppLogo">
-  <NavigationItems NavigationStyle="Accordion" DefaultChildItemsDisplayStyle="List" />
+  <NavigationItems NavigationStyle="Accordion" DefaultChildItemsDisplayStyle="List">
+    <Items>
+      <Item Id="Default">
+        <Items>
+          <Item Id="@2ce14a08-93d8-4482-a5e6-f0e3eff37a5d" ViewId="MyTask_ListView_Copy" Caption="My Task2" IsNewNode="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
   <Options UIType="TabbedMDI" FormStyle="Ribbon" />
   <SchemaModules>
     <SchemaModule Name="SystemModule" Version="23.1.5.0" IsNewNode="True" />
@@ -8,5 +16,14 @@
   </SchemaModules>
   <Views>
     <ListView Id="MyTask_ListView" EditorTypeName="GanttSolution.Module.Win.Editors.CustomGanttEditor" />
+    <ListView Id="MyTask_ListView_Copy" ClassName="GanttSolution.Module.BusinessObjects.MyTask" EditorTypeName="DevExpress.ExpressApp.Win.Editors.GridListEditor" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Name" PropertyName="Name" SortIndex="0" SortOrder="Ascending" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="Parent" PropertyName="Parent" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="StartDate" PropertyName="StartDate" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="EndDate" PropertyName="EndDate" Index="3" IsNewNode="True" />
+        <ColumnInfo Id="Progress" PropertyName="Progress" Index="4" IsNewNode="True" />
+      </Columns>
+    </ListView>
   </Views>
 </Application>
