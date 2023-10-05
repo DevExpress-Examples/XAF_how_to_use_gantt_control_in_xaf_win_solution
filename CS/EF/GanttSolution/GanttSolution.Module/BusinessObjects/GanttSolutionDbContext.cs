@@ -35,11 +35,11 @@ public class GanttSolutionEFCoreDbContext : DbContext {
 	public GanttSolutionEFCoreDbContext(DbContextOptions<GanttSolutionEFCoreDbContext> options) : base(options) {
 	}
 	public DbSet<MyTask> MyTasks { get; set; }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         base.OnModelCreating(modelBuilder);
         modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.ChangingAndChangedNotificationsWithOriginalValues);
         modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
+
 	//	modelBuilder.Entity<MyTask>().HasMany(e => e.PredecessorTasks).WithMany(e => e.NotPredecessorTasks);
 	//	modelBuilder.Entity<MyTask>().HasMany(e => e.Children).WithOne(e => e.Parent);
 		

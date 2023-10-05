@@ -40,9 +40,10 @@ public class Updater : ModuleUpdater {
            
         }
         ObjectSpace.CommitChanges();
-        secondTask.MyParent = mainTask.MyTaskId;
-        firstTask.MyParent = mainTask.MyTaskId;
-        secondTask.PredecessorTasks = firstTask.MyTaskId.ToString();
+      //  mainTask.Parent = -1;
+        secondTask.Parent = mainTask.ID;
+        firstTask.Parent = mainTask.ID;
+        secondTask.PredecessorTasks = firstTask.ID.ToString();
         ObjectSpace.CommitChanges();
     }
     public override void UpdateDatabaseBeforeUpdateSchema() {

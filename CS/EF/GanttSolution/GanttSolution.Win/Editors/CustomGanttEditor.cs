@@ -42,6 +42,7 @@ namespace GanttSolution.Module.Win.Editors {
                 var lst = ((ProxyCollection)controlDataSource).OriginalCollection as EFCoreCollection;
                 var lst2 = lst.Cast<object>().ToList();
                 control.DataSource = lst2;
+                // control.DataSource = controlDataSource;
                 control.RefreshDataSource();
             }
             finally {
@@ -68,7 +69,7 @@ namespace GanttSolution.Module.Win.Editors {
         protected override object CreateControlsCore() {
             control = new GanttControl();
             foreach (IModelColumn column in Model.Columns) {
-                if(column.Caption!="Name") {
+                if(!(column.Caption=="Name" || column.Caption == "Start Date" || column.Caption == "End Date")) {
                     continue;
                 }
 
@@ -83,8 +84,8 @@ namespace GanttSolution.Module.Win.Editors {
                 control.Columns.Add(ganttColumn);
             }
    
-            control.KeyFieldName = "Id";
-            control.ParentFieldName = "MyParent";
+            control.KeyFieldName = nameof(IMyTask.TaskId);
+            control.ParentFieldName = nameof(IMyTask.Parent);
             control.ChartMappings.TextFieldName = nameof(IMyTask.Name);
             control.ChartMappings.StartDateFieldName = nameof(IMyTask.StartDate);
             control.ChartMappings.FinishDateFieldName = nameof(IMyTask.EndDate);

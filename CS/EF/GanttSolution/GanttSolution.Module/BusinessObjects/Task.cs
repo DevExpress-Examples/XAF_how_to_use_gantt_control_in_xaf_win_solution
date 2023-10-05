@@ -8,19 +8,17 @@ using System.Collections.Generic;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.EF;
 using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GanttSolution.Module.BusinessObjects {
     [DefaultClassOptions]
-    public class MyTask : IMyTask{
+    public class MyTask :BaseObject, IMyTask {
         public MyTask() {
 
             StartDate = DateTime.Today;
             EndDate = DateTime.Today.AddDays(1);
         }
-        public virtual int MyTaskId { get; set; }
-
-        public virtual int MyParent { get; set; }
-        // public virtual IList<MyTask> Children { get; set; } = new ObservableCollection<MyTask>();
+        public virtual Guid Parent { get; set; }
         public virtual string Name { get; set; }
         public virtual DateTime StartDate { get; set; }
         public virtual DateTime EndDate { get; set; }
@@ -29,61 +27,11 @@ namespace GanttSolution.Module.BusinessObjects {
         public virtual double Progress { get; set; }
 
         public virtual string PredecessorTasks { get; set; }
-        //public virtual IList<MyTask> NotPredecessorTasks { get; set; } = new ObservableCollection<MyTask>();
-
-
 
         #region ITask
-        [Browsable(false)]
-        public int Id { get { return this.MyTaskId; } }
-        int IMyTask.Parent {
-            get { return MyParent; }
-            set { MyParent = value; }
-        }
-        string IMyTask.PredecessorTasks {
-            get {
-                return PredecessorTasks;
-            }
-        }
+       public Guid TaskId { get { return this.ID; } }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event PropertyChangingEventHandler PropertyChanging;
+
         #endregion
     }
-    //public class MyTask : BaseObject, IMyTask {
-    //    public MyTask() {
-
-    //        StartDate = DateTime.Today;
-    //        EndDate = DateTime.Today.AddDays(1);
-    //    }
-
-
-    //    public virtual Guid MyParent { get; set; }
-    //   // public virtual IList<MyTask> Children { get; set; } = new ObservableCollection<MyTask>();
-    //    public virtual string Name { get; set; }
-    //    public virtual DateTime StartDate { get; set; }
-    //    public virtual DateTime EndDate { get; set; }
-    //    [Browsable(false)]
-    //    public virtual TimeSpan Duration { get; set; }
-    //    public virtual double Progress { get; set; }
-
-    //    public virtual string PredecessorTasks { get; set; }
-    //    //public virtual IList<MyTask> NotPredecessorTasks { get; set; } = new ObservableCollection<MyTask>();
-
-
-
-    //    #region ITask
-    //    [Browsable(false)]
-    //    public Guid Id { get { return this.ID; } }
-    //    Guid IMyTask.Parent {
-    //        get { return MyParent; }
-    //        set { MyParent = value; }
-    //    }
-    //    string IMyTask.PredecessorTasks {
-    //        get {
-    //            return PredecessorTasks;
-    //        }
-    //    }
-    //    #endregion
-    //}
 }

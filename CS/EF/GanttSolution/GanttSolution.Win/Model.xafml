@@ -4,7 +4,7 @@
     <Items>
       <Item Id="Default">
         <Items>
-          <Item Id="@2ce14a08-93d8-4482-a5e6-f0e3eff37a5d" ViewId="MyTask_ListView_Copy" Caption="My Task2" IsNewNode="True" />
+          <Item Id="@2ce14a08-93d8-4482-a5e6-f0e3eff37a5d" ViewId="MyTask_ListView_Copy" Caption="My Task Plain" IsNewNode="True" />
         </Items>
       </Item>
     </Items>
