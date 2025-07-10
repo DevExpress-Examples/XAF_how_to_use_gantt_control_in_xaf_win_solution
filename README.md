@@ -17,7 +17,7 @@ Follow the steps below to add the [Gantt Control](https://docs.devexpress.com/Wi
 1. Implement a business class that will contain task records in the Gantt Control data source (copy [ITask.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/ITask.cs) and [Task.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/Task.cs) files to *YourSolutionName.Module/BusinessObjects* folder).
 
 1. Copy the following files to the *YourSolutionName.Win* project and build your solution:
-    - [GanttSolution.Win\Controllers\RibbonCustomizationWindowController.cs](CS/EF/GanttSolution/GanttSolution.Win/Controllers/RibbonCustomizationWindowController.cs)
+    - [GanttSolution.Win/Controllers/RibbonCustomizationWindowController.cs](CS/EF/GanttSolution/GanttSolution.Win/Controllers/RibbonCustomizationWindowController.cs)
     - [GanttSolution.Win/Editors/CustomGanttEditor.cs](CS/EF/GanttSolution/GanttSolution.Win/Editors/CustomGanttEditor.cs)
 
 1. Double click the *YourSolutionName.Win/Model.xafml* file to invoke the Model Editor. Navigate to the **Views** | **YourTaskClass_ListView** node and set `EditorType` to `GanttSolution.Module.Win.Editors.CustomGanttEditor`.
