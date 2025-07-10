@@ -4,37 +4,39 @@
 [![](https://img.shields.io/badge/💬_Leave_Feedback-feecdd?style=flat-square)](#does-this-example-address-your-development-requirementsobjectives)
 <!-- default badges end -->
 
+# XAF WinForms - How to Use the Gantt Control to Display a List of Tasks
 
+This example integrate the WinForms [Gantt Control](https://docs.devexpress.com/WindowsForms/401173/controls-and-libraries/gantt-control/gantt-control) in an XAF WinForms application. Gantt displays a list of business objects (tasks) as a project schedule.
 
-# How to Use the Gantt Control to Display a List of Tasks in XAF WinForms Apps
-
-
-This example demonstrates the simplest integration solution for the WinForms [Gantt Control](https://docs.devexpress.com/WindowsForms/401173/controls-and-libraries/gantt-control/gantt-control) in XAF WinForms. Gantt will display a list of business objects (tasks) as a project schedule:
 ![image](https://user-images.githubusercontent.com/14300209/82027691-4d5a0b00-969d-11ea-936f-a68f863d9f8a.png)
 
-## Implementation Steps
+## Implementation Details
 
-**Step 1.** Add the [GanttSolution.Module/BusinessObjects/ITask.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/ITask.cs) file to your *YourSolutionName.Module* project. Implement the *GanttSolution.Module.BusinessObjects.ITask* interface in the business class that will be a task record in the Gantt Control data source (research *GanttSolution.Module.BusinessObjects.Task.cs* for details).
+Follow the steps below to add the [Gantt Control](https://docs.devexpress.com/WindowsForms/401173/controls-and-libraries/gantt-control/gantt-control) in your application:
 
-**Step 2.** Add the following files to the *YourSolutionName.Win* project and build your solution:
-  
-  - *GanttSolution.Win\Controllers\RibbonCustomizationWindowController.cs*
-  - *GanttSolution.Win\Editors\CustomGanttEditor.cs*
-  
-For more information on custom List Editors and related customization scenarios, see [List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors) | [How to: Access the List Editor's Control](https://docs.devexpress.com/eXpressAppFramework/112814/task-based-help/scheduler-and-notifications/how-to-access-the-list-editors-control).
+1. Implement a business class that will contain task records in the Gantt Control data source (copy [ITask.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/ITask.cs) and [Task.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/Task.cs) files to *YourSolutionName.Module/BusinessObjects* folder).
 
-**Step 3.** Invoke the Model Editor for the *YourSolutionName.Win* project, navigate to the `Views | YourTaskClass_ListView` node and set **EditorType** to `GanttSolution.Module.Win.Editors.CustomGanttEditor`. For more information, see [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors).
+1. Add the following files to the *YourSolutionName.Win* project and build your solution:
+    - *GanttSolution.Win\Controllers\RibbonCustomizationWindowController.cs*
+    - *GanttSolution.Win\Editors\CustomGanttEditor.cs*
 
-**NOTE**: This example is not a complete solution. Thoroughly test, extend and modify its code to meet your business requirements.
+1. Double click the *YourSolutionName.Win/Model.xafml* file to invoke the Model Editor. Navigate to the **Views** | **YourTaskClass_ListView** node and set `EditorType` to `GanttSolution.Module.Win.Editors.CustomGanttEditor`.
 
----
-To integrate ASPxGantt into an XAF ASP.NET project, create a custom list editor as we described at [T831607 - Web - How to use ASPxGantt in XAF](https://supportcenter.devexpress.com/internal/ticket/details/T831607#)
+> **Note**
+> This example is not a complete solution. Thoroughly test, extend and modify its code to meet your business requirements.
 
 ## Files to Review
 * [CustomGanttEditor.cs](CS/EF/GanttSolution/GanttSolution.Win/Editors/CustomGanttEditor.cs) 
 * [RibbonCustomizationWindowController.cs](CS/EF/GanttSolution/GanttSolution.Win/Controllers/RibbonCustomizationWindowController.cs)
 * [ITask.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/ITask.cs)
 * [Task.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/Task.cs)
+
+## Documentation
+* [List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors)
+* [How to: Access the List Editor's Control](https://docs.devexpress.com/eXpressAppFramework/112814/task-based-help/scheduler-and-notifications/how-to-access-the-list-editors-control)
+* [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors)
+* [Web - How to use ASPxGantt in XAF](https://supportcenter.devexpress.com/internal/ticket/details/T831607)
+
 <!-- feedback -->
 ## Does this example address your development requirements/objectives?
 
