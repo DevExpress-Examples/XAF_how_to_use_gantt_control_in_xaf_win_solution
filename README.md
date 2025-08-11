@@ -6,15 +6,15 @@
 
 # XAF WinForms - How to Use the Gantt Control to Display a List of Tasks
 
-This example integrate the WinForms [Gantt Control](https://docs.devexpress.com/WindowsForms/401173/controls-and-libraries/gantt-control/gantt-control) in an XAF WinForms application. Gantt displays a list of business objects (tasks) as a project schedule.
+This example integrates the WinForms [Gantt Control](https://docs.devexpress.com/WindowsForms/401173/controls-and-libraries/gantt-control/gantt-control) in an XAF WinForms application. Gantt displays a list of business objects (tasks) as a project schedule.
 
 ![image](https://user-images.githubusercontent.com/14300209/82027691-4d5a0b00-969d-11ea-936f-a68f863d9f8a.png)
 
 ## Implementation Details
 
-Follow the steps below to add the [Gantt Control](https://docs.devexpress.com/WindowsForms/401173/controls-and-libraries/gantt-control/gantt-control) in your application:
+Follow the steps below to add the [Gantt Control](https://docs.devexpress.com/WindowsForms/401173/controls-and-libraries/gantt-control/gantt-control) to your application:
 
-1. Implement a business class that will contain task records in the Gantt Control data source (copy [ITask.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/ITask.cs) and [Task.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/Task.cs) files to *YourSolutionName.Module/BusinessObjects* folder).
+1. Implement a business class that contains task records in the Gantt Control data source (copy [ITask.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/ITask.cs) and [Task.cs](CS/EF/GanttSolution/GanttSolution.Module/BusinessObjects/Task.cs) files to *YourSolutionName.Module/BusinessObjects* folder).
 
 1. Copy the following files to the *YourSolutionName.Win* project and build your solution:
     - [GanttSolution.Win/Controllers/RibbonCustomizationWindowController.cs](CS/EF/GanttSolution/GanttSolution.Win/Controllers/RibbonCustomizationWindowController.cs)
@@ -23,7 +23,7 @@ Follow the steps below to add the [Gantt Control](https://docs.devexpress.com/Wi
 1. Double click the *YourSolutionName.Win/Model.xafml* file to invoke the Model Editor. Navigate to the **Views** | **YourTaskClass_ListView** node and set `EditorType` to `GanttSolution.Module.Win.Editors.CustomGanttEditor`.
 
 > **Note**
-> This example is not a complete solution. Thoroughly test, extend and modify its code to meet your business requirements.
+> This example is not a complete solution. You can test, extend, and modify its code to meet your business requirements.
 
 ## Files to Review
 * [CustomGanttEditor.cs](CS/EF/GanttSolution/GanttSolution.Win/Editors/CustomGanttEditor.cs) 
