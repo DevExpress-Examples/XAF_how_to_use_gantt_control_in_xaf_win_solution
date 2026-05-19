@@ -18,7 +18,6 @@ public class GanttSolutionWindowsFormsApplication : WinApplication {
 		SplashScreen = new DXSplashScreen(typeof(XafSplashScreen), new DefaultOverlayFormOptions());
         ApplicationName = "GanttSolution";
         CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
-        UseOldTemplates = false;
         DatabaseVersionMismatch += GanttSolutionWindowsFormsApplication_DatabaseVersionMismatch;
         CustomizeLanguagesList += GanttSolutionWindowsFormsApplication_CustomizeLanguagesList;
     }
