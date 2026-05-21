@@ -36,7 +36,7 @@ Follow the steps below to add the [Gantt Control](https://docs.devexpress.com/Wi
 * [List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors)
 * [How to: Access the List Editor's Control](https://docs.devexpress.com/eXpressAppFramework/112814/task-based-help/scheduler-and-notifications/how-to-access-the-list-editors-control)
 * [Customize List Editors](https://docs.devexpress.com/eXpressAppFramework/113189/concepts/ui-construction/list-editors#customize-list-editors)
-* [Web - How to use ASPxGantt in XAF](https://supportcenter.devexpress.com/internal/ticket/details/T831607)
+* [Web - How to use ASPxGantt in XAF](https://supportcenter.devexpress.com/ticket/details/t831607/web-how-to-use-aspxgantt-in-xaf)
 
 <!-- feedback -->
 ## Does This Example Address Your Development Requirements/Objectives?
