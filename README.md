@@ -32,7 +32,7 @@ For more information on custom List Editors and related customization scenarios,
 **NOTE**: This example is not a complete solution. Thoroughly test, extend and modify its code to meet your business requirements.
 
 ---
-To integrate ASPxGantt into an XAF ASP.NET project, create a custom list editor as we described at [T831607 - Web - How to use ASPxGantt in XAF](https://supportcenter.devexpress.com/internal/ticket/details/T831607#)
+To integrate ASPxGantt into an XAF ASP.NET project, create a custom list editor as we described at [T831607 - Web - How to use ASPxGantt in XAF](https://supportcenter.devexpress.com/ticket/details/t831607/web-how-to-use-aspxgantt-in-xaf)
 <!-- feedback -->
 ## Does This Example Address Your Development Requirements/Objectives?
 
