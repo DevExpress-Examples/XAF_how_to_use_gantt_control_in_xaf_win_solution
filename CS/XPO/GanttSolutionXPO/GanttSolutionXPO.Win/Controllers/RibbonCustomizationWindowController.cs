@@ -2,7 +2,6 @@
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraGantt;
 using DevExpress.XtraGantt.Ribbon;
-using System;
 
 namespace GanttSolution.Module.Win.Controllers {
     public class RibbonCustomizationWindowController : ViewController<ListView> {
@@ -24,7 +23,7 @@ namespace GanttSolution.Module.Win.Controllers {
                 if(ribbonControl != null && ganttControl != null) {
                     AddGanttPageToRibbon();
                 }
-            }  
+            }
         }
 
         #region Initialization
@@ -93,13 +92,13 @@ namespace GanttSolution.Module.Win.Controllers {
             // 
             // ganttViewRibbonPage
             // 
-            ganttViewRibbonPage.Groups.AddRange(new RibbonPageGroup[] {
+            ganttViewRibbonPage.Groups.AddRange(new [] {
             ganttSplitViewRibbonPageGroup});
             ganttViewRibbonPage.Text = "Gantt";
             // 
             // ganttPanelVisibilityBarSubItem
             // 
-            ganttPanelVisibilityBarSubItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            ganttPanelVisibilityBarSubItem.LinksPersistInfo.AddRange(new [] {
             new DevExpress.XtraBars.LinkPersistInfo(ganttPanelVisibilityDefaultBarCheckItem),
             new DevExpress.XtraBars.LinkPersistInfo(ganttPanelVisibilityBothBarCheckItem),
             new DevExpress.XtraBars.LinkPersistInfo(ganttPanelVisibilityChartBarCheckItem),
@@ -107,7 +106,7 @@ namespace GanttSolution.Module.Win.Controllers {
             // 
             // ganttFixedPanelBarSubItem
             // 
-            ganttFixedPanelBarSubItem.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            ganttFixedPanelBarSubItem.LinksPersistInfo.AddRange(new [] {
             new DevExpress.XtraBars.LinkPersistInfo(ganttFixedPanelDefaultBarCheckItem),
             new DevExpress.XtraBars.LinkPersistInfo(ganttFixedPanelNoneBarCheckItem),
             new DevExpress.XtraBars.LinkPersistInfo(ganttFixedPanelChartBarCheckItem),
@@ -116,11 +115,11 @@ namespace GanttSolution.Module.Win.Controllers {
             ribbonControl.EndInit();
             ((System.ComponentModel.ISupportInitialize)ganttBarController).EndInit();
         }
-		#endregion
+        #endregion
 
-		protected override void OnDeactivated() {
+        protected override void OnDeactivated() {
             View.ControlsCreated -= View_ControlsCreated;
-            if(ribbonControl != null) {
+            if(ribbonControl != null && ganttViewRibbonPage != null) {
                 ribbonControl.Pages.Remove(ganttViewRibbonPage);
                 ganttViewRibbonPage.Dispose();
             }

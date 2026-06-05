@@ -1,14 +1,11 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Editors;
+using DevExpress.ExpressApp.EFCore;
 using DevExpress.ExpressApp.Model;
 using DevExpress.XtraGantt;
-using System;
+using GanttSolution.Module.BusinessObjects;
 using System.Collections;
 using System.ComponentModel;
-using System.Windows.Forms;
-using GanttSolution.Module.BusinessObjects;
-using DevExpress.ExpressApp.EFCore;
-using System.Windows.Controls;
 
 namespace GanttSolution.Module.Win.Editors {
     [ListEditor(typeof(IMyTask), false)]
@@ -20,47 +17,43 @@ namespace GanttSolution.Module.Win.Editors {
             get { return SelectionType.Full; }
         }
         public override IList GetSelectedObjects() {
-            if (control == null) {
-                return new object[0] { };
+            if(control == null) {
+                return Array.Empty<object>();
             }
-            object[] result = new object[1];
-            result[0] = control.GetFocusedRow();
-            return result;
+
+            var focusedRow = control.GetFocusedRow();
+            if(focusedRow != null) {
+                return new object[1] { focusedRow };
+            } else {
+                return Array.Empty<object>();
+            }
         }
-        private void Control_SelectedIndexChanged(object sender, EventArgs e) {
-            OnSelectionChanged();
-            OnFocusedObjectChanged();
-        }
-        private void Control_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
-            OnSelectionChanged();
+        public override object FocusedObject {
+            get {
+                return control?.GetFocusedRow();
+            }
         }
         public override void Refresh() {
-            if (control == null)
+            if(control == null)
                 return;
             try {
                 control.BeginUpdate();
                 var lst = ((ProxyCollection)controlDataSource).OriginalCollection as EFCoreCollection;
-                var lst2 = lst.Cast<object>().ToList();
-                control.DataSource = lst2;
-                // control.DataSource = controlDataSource;
+                control.DataSource = lst;
                 control.RefreshDataSource();
-            }
-            finally {
+            } finally {
                 control.EndUpdate();
             }
         }
-        private void DataSource_ListChanged(object sender, ListChangedEventArgs e) {
-            Refresh();
-        }
         protected override void AssignDataSourceToControl(object dataSource) {
-            if (controlDataSource != dataSource) {
+            if(controlDataSource != dataSource) {
                 IBindingList oldBindable = controlDataSource as IBindingList;
-                if (oldBindable != null) {
-                    oldBindable.ListChanged -= new ListChangedEventHandler(DataSource_ListChanged);
+                if(oldBindable != null) {
+                    oldBindable.ListChanged -= DataSource_ListChanged;
                 }
                 controlDataSource = dataSource;
                 IBindingList bindable = controlDataSource as IBindingList;
-                if (bindable != null) {
+                if(bindable != null) {
                     bindable.ListChanged += DataSource_ListChanged;
                 }
                 Refresh();
@@ -68,22 +61,20 @@ namespace GanttSolution.Module.Win.Editors {
         }
         protected override object CreateControlsCore() {
             control = new GanttControl();
-            foreach (IModelColumn column in Model.Columns) {
-                if(!(column.Caption=="Name" || column.Caption == "Start Date" || column.Caption == "End Date")) {
-                    continue;
+            foreach(IModelColumn column in Model.Columns) {
+                if(column.PropertyName is nameof(IMyTask.Name) or nameof(IMyTask.StartDate) or nameof(IMyTask.EndDate)) {
+                    var ganttColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+                    ganttColumn.Caption = column.Caption;
+                    ganttColumn.FieldName = column.PropertyName;
+                    ganttColumn.Name = column.PropertyName + "Column";
+                    ganttColumn.Visible = true;
+                    ganttColumn.SortIndex = column.SortIndex;
+                    ganttColumn.Format.FormatString = column.DisplayFormat;
+                    ganttColumn.Format.FormatType = DevExpress.Utils.FormatType.Custom;
+                    control.Columns.Add(ganttColumn);
                 }
-
-                var ganttColumn = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-                ganttColumn.Caption = column.Caption;
-                ganttColumn.FieldName = column.PropertyName;
-                ganttColumn.Name = column.PropertyName + "Column";
-                ganttColumn.Visible = true;
-                ganttColumn.SortIndex = column.SortIndex;
-                ganttColumn.Format.FormatString = column.DisplayFormat;
-                ganttColumn.Format.FormatType = DevExpress.Utils.FormatType.Custom;
-                control.Columns.Add(ganttColumn);
             }
-   
+
             control.KeyFieldName = nameof(IMyTask.TaskId);
             control.ParentFieldName = nameof(IMyTask.Parent);
             control.ChartMappings.TextFieldName = nameof(IMyTask.Name);
@@ -103,29 +94,43 @@ namespace GanttSolution.Module.Win.Editors {
             Refresh();
             return control;
         }
+        private void DataSource_ListChanged(object sender, ListChangedEventArgs e) {
+            Refresh();
+        }
         private void Control_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e) {
             OnSelectionChanged();
             OnFocusedObjectChanged();
         }
+        private void Control_SelectedIndexChanged(object sender, EventArgs e) {
+            OnSelectionChanged();
+            OnFocusedObjectChanged();
+        }
         private void Control_MouseDoubleClick(object sender, MouseEventArgs e) {
-            if (e.Button == MouseButtons.Left) {
+            if(e.Button == MouseButtons.Left) {
                 GanttControlHitInfo hitInfo = control.CalcHitInfo(e.Location);
-                if (hitInfo.ChartHitTest?.ItemInfo != null) {
+                if(hitInfo.ChartHitTest?.ItemInfo != null) {
                     OnProcessSelectedItem();
                 }
             }
         }
         private void Control_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyCode == Keys.Enter) {
+            if(e.KeyCode == Keys.Enter) {
                 OnProcessSelectedItem();
             }
         }
-        public override object FocusedObject {
-            get {
-                return control?.GetFocusedRow();
-            }
-        }
         public override void Dispose() {
+            if(control != null) {
+                control.SelectionChanged -= Control_SelectedIndexChanged;
+                control.FocusedNodeChanged -= Control_FocusedNodeChanged;
+                control.MouseDoubleClick -= Control_MouseDoubleClick;
+                control.KeyDown -= Control_KeyDown;
+                control.Dispose();
+                control = null;
+            }
+            IBindingList oldBindable = controlDataSource as IBindingList;
+            if(oldBindable != null) {
+                oldBindable.ListChanged -= DataSource_ListChanged;
+            }
             controlDataSource = null;
             base.Dispose();
         }

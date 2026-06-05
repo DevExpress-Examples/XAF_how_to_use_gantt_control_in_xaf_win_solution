@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.ObjectModel;
 
 namespace GanttSolution.Module.BusinessObjects {
     public interface IMyTask {
-        Guid TaskId { get; }
+        IMyTask TaskId { get; }
         string Name { get; set; }
         DateTime StartDate { get; set; }
         DateTime EndDate { get; set; }
         TimeSpan Duration { get; set; }
         double Progress { get; set; }
-        Guid Parent { get; set; }
-        string PredecessorTasks { get; }
+        IMyTask Parent { get; set; }
+        IList<IMyTask> PredecessorTasks { get; }
     }
 }

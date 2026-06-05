@@ -1,15 +1,11 @@
-﻿using System;
-using System.Linq;
-using System.Text;
+﻿using DevExpress.Persistent.Base;
+using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
 using System.ComponentModel;
-using DevExpress.Persistent.Base;
-using System.Collections.Generic;
-using DevExpress.Persistent.BaseImpl;
 
 namespace GanttSolution.Module.BusinessObjects {
     [DefaultClassOptions]
-    public class MyTask : BaseObject, IMyTask { 
+    public class MyTask : BaseObject, IMyTask {
         public MyTask(Session session)
             : base(session) {
             StartDate = DateTime.Today;

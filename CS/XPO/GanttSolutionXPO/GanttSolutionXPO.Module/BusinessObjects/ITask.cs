@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace GanttSolution.Module.BusinessObjects {
+﻿namespace GanttSolution.Module.BusinessObjects {
     public interface IMyTask {
         IMyTask Id { get; }
         string Name { get; set; }

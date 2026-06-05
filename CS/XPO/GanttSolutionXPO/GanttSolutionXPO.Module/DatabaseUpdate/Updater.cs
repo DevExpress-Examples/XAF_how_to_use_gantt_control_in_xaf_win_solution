@@ -1,12 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp;
-using DevExpress.Data.Filtering;
-using DevExpress.Persistent.Base;
 using DevExpress.ExpressApp.Updating;
-using DevExpress.Xpo;
-using DevExpress.ExpressApp.Xpo;
-using DevExpress.Persistent.BaseImpl;
 using GanttSolution.Module.BusinessObjects;
 
 namespace GanttSolutionXPO.Module.DatabaseUpdate {
@@ -41,6 +35,17 @@ namespace GanttSolutionXPO.Module.DatabaseUpdate {
                 secondTask.EndDate = DateTime.Today.AddDays(14);
                 secondTask.PredecessorTasks.Add(firstTask);
             }
+
+            MyTask secondTask_2 = ObjectSpace.FindObject<MyTask>(new BinaryOperator(nameof(MyTask.Name), "Second Task 2"));
+            if(secondTask_2 == null) {
+                secondTask_2 = ObjectSpace.CreateObject<MyTask>();
+                secondTask_2.Name = "Second Task 2";
+                secondTask_2.Parent = mainTask;
+                secondTask_2.StartDate = DateTime.Today.AddDays(7);
+                secondTask_2.EndDate = DateTime.Today.AddDays(14);
+                secondTask_2.PredecessorTasks.Add(firstTask);
+            }
+
             ObjectSpace.CommitChanges();
         }
         public override void UpdateDatabaseBeforeUpdateSchema() {
