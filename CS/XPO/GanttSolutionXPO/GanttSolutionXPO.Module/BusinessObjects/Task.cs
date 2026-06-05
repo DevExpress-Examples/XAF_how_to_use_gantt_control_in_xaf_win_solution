@@ -53,9 +53,9 @@ namespace GanttSolution.Module.BusinessObjects {
         }
         [Association("PredecessorTasks")]
         [Browsable(false)]
-        public XPCollection<MyTask> NotPredecessorTasks {
+        public XPCollection<MyTask> SuccessorTasks {
             get {
-                return GetCollection<MyTask>(nameof(NotPredecessorTasks));
+                return GetCollection<MyTask>(nameof(SuccessorTasks));
             }
         }
 

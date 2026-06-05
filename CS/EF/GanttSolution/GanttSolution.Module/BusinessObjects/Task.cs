@@ -20,6 +20,8 @@ namespace GanttSolution.Module.BusinessObjects {
         public virtual double Progress { get; set; }
 
         public virtual ObservableCollection<MyTask> PredecessorTasks { get; set; } = new ObservableCollection<MyTask>();
+        [Browsable(false)]
+        public virtual ObservableCollection<MyTask> SuccessorTasks { get; set; } = new ObservableCollection<MyTask>();
 
         #region ITask
         public IMyTask TaskId { get { return this; } }

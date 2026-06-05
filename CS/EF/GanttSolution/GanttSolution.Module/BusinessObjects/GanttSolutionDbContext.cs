@@ -46,7 +46,7 @@ public class GanttSolutionEFCoreDbContext : DbContext {
         // PredecessorTasks is a separate many-to-many — join table, no inverse navigation
         modelBuilder.Entity<MyTask>()
             .HasMany(t => t.PredecessorTasks)
-            .WithMany()
+            .WithMany(t => t.SuccessorTasks)
             .UsingEntity(j => j.ToTable("MyTaskPredecessors"));
     }
 }
